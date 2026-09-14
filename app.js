@@ -11,7 +11,56 @@ const catalog = {
   daily_dinner: { name: "Daily Regular Dinner Thali", price: 80, qty: 0, pro: "16g" }
 };
 
-const WHATSAPP_NUM = "91998828360";
+const WHATSAPP_NUM = "916239813663";
+
+function placeWhatsAppOrder() {
+  const name = document.getElementById('custName').value.trim();
+  const phone = document.getElementById('custPhone').value.trim();
+  const addr = document.getElementById('custAddr').value.trim();
+
+  let orderLines = [];
+  let grandTotal = 0;
+  let hasTrial = false;
+
+  for (const k in catalog) {
+    if (catalog[k].qty > 0) {
+      if (k === 'trial') hasTrial = true;
+      orderLines.push(`▪ ${catalog[k].name} (x${catalog[k].qty}) [${catalog[k].pro} Prot] -> ₹${catalog[k].qty * catalog[k].price}`);
+      grandTotal += catalog[k].qty * catalog[k].price;
+    }
+  }
+
+  if (orderLines.length === 0) {
+    alert("Kam se kam 1 item cart me add karein!");
+    return;
+  }
+  if (!name || !phone || !addr) {
+    alert("Kripya apna naam, mobile number aur Kharar ka delivery address daalein.");
+    return;
+  }
+
+  const dayIdx = new Date().getDay();
+  const currentDay = weeklySchedule[dayIdx].day;
+
+  let text = `*Ghar Se Tiffin - Naya Order*\n`;
+  text += `📅 *Day:* ${currentDay}\n`;
+  text += `------------------------------------\n`;
+  text += `👤 *Customer:* ${name}\n`;
+  text += `📞 *Phone:* ${phone}\n`;
+  text += `📍 *Delivery Address:* ${addr}\n`;
+  text += `------------------------------------\n`;
+  text += `*Ordered Items:*\n`;
+  text += orderLines.join('\n') + `\n`;
+  text += `------------------------------------\n`;
+  text += `💰 *Total Amount:* ₹${grandTotal}\n`;
+  if (hasTrial) {
+    text += `\n*(Note: Trial ₹70 meal included - verified 1st time order)*\n`;
+  }
+  text += `\nKripya confirm karein aur delivery time bata dein!`;
+
+  const link = `https://wa.me/${WHATSAPP_NUM}?text=${encodeURIComponent(text)}`;
+  window.open(link, '_blank');
+}
 
 const weeklySchedule = {
   0: { day: "Sunday", lunch: "Special Rajma Masala + Jeera Aloo + 4 Butter Roti + Basmati Rice + Salad", dinner: "Dal Makhani + Seasonal Sabzi + 4 Tawa Roti + Rice + Salad" },
