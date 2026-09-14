@@ -2,286 +2,534 @@
 <html lang="hi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ghar Se Tiffin - Fresh & Pure</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Ghar Se Tiffin - Kharar</title>
   <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#ea580c">
+  <meta name="theme-color" content="#111827">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #ea580c;
       --primary-dark: #c2410c;
-      --bg: #fffbeb;
-      --card-bg: #ffffff;
-      --text: #1f2937;
-      --text-muted: #6b7280;
-      --accent: #22c55e;
+      --accent: #16a34a;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --macro-bg: #f1f5f9;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body { background-color: var(--bg); color: var(--text); padding-bottom: 90px; }
-    
-    header {
-      background: linear-gradient(135deg, #ea580c, #f97316);
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
+    body { background: var(--bg); color: var(--text); padding-bottom: 110px; }
+
+    /* Top App Header */
+    .app-header {
+      background: #111827;
       color: white;
-      padding: 24px 20px;
-      border-bottom-left-radius: 24px;
-      border-bottom-right-radius: 24px;
-      text-align: center;
-      box-shadow: 0 4px 20px rgba(234, 88, 12, 0.25);
+      padding: 16px 20px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     }
-    header h1 { font-size: 24px; font-weight: 800; }
-    header p { font-size: 13px; opacity: 0.9; margin-top: 4px; }
-
-    .container { max-width: 480px; margin: 0 auto; padding: 16px; }
-
-    .pwa-banner {
-      display: none;
-      background: #fef3c7;
-      border: 1px solid #fde68a;
-      padding: 12px 16px;
-      border-radius: 12px;
-      margin-bottom: 16px;
+    .header-top {
+      display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    .pwa-banner span { font-size: 13px; font-weight: 600; color: #92400e; }
-    .pwa-btn { background: #ea580c; color: white; border: none; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; cursor: pointer; }
-
-    .menu-card {
-      background: var(--card-bg);
-      border-radius: 18px;
-      padding: 18px;
-      margin-bottom: 16px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-      border: 1px solid #f3f4f6;
+    .brand-title {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    .badge {
-      display: inline-block;
-      background: #ffedd5;
-      color: var(--primary);
+    .loc-tag {
       font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      padding: 4px 10px;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 3px;
+    }
+
+    /* Domino's Style Category Pills */
+    .category-scroll {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 12px 16px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 68px;
+      z-index: 40;
+      scrollbar-width: none;
+    }
+    .category-scroll::-webkit-scrollbar { display: none; }
+    .cat-btn {
+      white-space: nowrap;
+      padding: 8px 16px;
       border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      background: #f1f5f9;
+      color: var(--muted);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .cat-btn.active {
+      background: #111827;
+      color: #ffffff;
+    }
+
+    .main-feed {
+      max-width: 540px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    /* Product Card */
+    .item-card {
+      background: var(--surface);
+      border-radius: 18px;
+      padding: 16px;
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);
+      position: relative;
+    }
+    .badge-wrap {
+      display: flex;
+      gap: 6px;
       margin-bottom: 8px;
     }
-    .card-title { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
-    .card-items { font-size: 13px; color: var(--text-muted); line-height: 1.5; margin-bottom: 14px; }
-    .card-footer {
+    .tag {
+      font-size: 10px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .tag-gym { background: #dbeafe; color: #1d4ed8; }
+    .tag-trial { background: #fef08a; color: #854d0e; }
+    .tag-classic { background: #ffedd5; color: #c2410c; }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .item-info { flex: 1; }
+    .item-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .item-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-top: 6px;
+    }
+
+    /* Domino's Style Macros Pill */
+    .macros-strip {
+      display: flex;
+      gap: 6px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    .macro-pill {
+      background: var(--macro-bg);
+      border-radius: 6px;
+      padding: 3px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #334155;
+    }
+    .macro-pill.pro {
+      background: #dcfce7;
+      color: #15803d;
+      font-weight: 800;
+    }
+
+    /* Footer / Price & Add Button */
+    .card-actions {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-top: 1px dashed #e5e7eb;
+      margin-top: 14px;
       padding-top: 12px;
+      border-top: 1px dashed var(--border);
     }
-    .price { font-size: 20px; font-weight: 800; color: var(--primary-dark); }
+    .price-tag {
+      font-size: 18px;
+      font-weight: 800;
+      color: #0f172a;
+    }
 
-    .qty-control {
+    .qty-box {
       display: flex;
       align-items: center;
-      gap: 12px;
-      background: #f3f4f6;
-      padding: 4px 10px;
+      gap: 10px;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      padding: 4px 8px;
       border-radius: 10px;
     }
     .qty-btn {
-      background: white;
-      border: none;
       width: 28px;
       height: 28px;
+      background: white;
+      border: 1px solid var(--border);
       border-radius: 6px;
       font-weight: 800;
+      font-size: 15px;
       color: var(--primary);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .qty-display { font-weight: 700; font-size: 14px; }
-
-    .input-box {
-      background: white;
-      padding: 16px;
-      border-radius: 16px;
-      margin-bottom: 16px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-    }
-    .input-box label { display: block; font-size: 12px; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; }
-    .input-box input, .input-box textarea {
-      width: 100%;
-      border: 1px solid #e5e7eb;
-      border-radius: 8px;
-      padding: 10px;
+    .qty-count {
       font-size: 14px;
+      font-weight: 800;
+      min-width: 16px;
+      text-align: center;
+    }
+
+    /* User details inputs */
+    .checkout-form {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+      margin-top: 20px;
+    }
+    .checkout-form h3 {
+      font-size: 14px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: #334155;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .input-field {
+      width: 100%;
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 13px;
+      margin-bottom: 10px;
       outline: none;
     }
-    .input-box input:focus, .input-box textarea:focus { border-color: var(--primary); }
+    .input-field:focus { border-color: var(--primary); }
 
-    .bottom-bar {
+    /* Domino's Floating Cart Bottom Sheet */
+    .cart-bottom-bar {
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
-      background: white;
-      border-top: 1px solid #f3f4f6;
+      background: #ffffff;
       padding: 12px 20px;
-      box-shadow: 0 -4px 15px rgba(0,0,0,0.05);
+      border-top: 1px solid var(--border);
+      box-shadow: 0 -8px 24px rgba(0,0,0,0.08);
+      z-index: 100;
+    }
+    .cart-inner {
+      max-width: 540px;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 480px;
-      margin: 0 auto;
     }
-    .total-text { font-size: 12px; color: var(--text-muted); }
-    .total-amt { font-size: 20px; font-weight: 800; color: #111; }
-    .order-btn {
+    .cart-summary .items-count { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; }
+    .cart-summary .grand-total { font-size: 20px; font-weight: 800; color: #0f172a; }
+
+    .btn-checkout {
       background: #25D366;
       color: white;
-      text-decoration: none;
-      font-weight: 700;
+      font-weight: 800;
+      font-size: 15px;
+      border: none;
       padding: 12px 22px;
       border-radius: 12px;
-      font-size: 15px;
       display: flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-      border: none;
       cursor: pointer;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Ghar Se Tiffin 🍱</h1>
-    <p>Shuddh, Taaza aur Ghar Jaisa Khana</p>
+  <!-- App Bar -->
+  <header class="app-header">
+    <div class="header-top">
+      <div>
+        <div class="brand-title">Ghar Se Tiffin 🍱</div>
+        <div class="loc-tag">📍 Serving Kharar & Nearby Societies</div>
+      </div>
+    </div>
   </header>
 
-  <div class="container">
-    <div id="pwaBanner" class="pwa-banner">
-      <span>📲 Phone me App install karein</span>
-      <button id="installAppBtn" class="pwa-btn">Install</button>
-    </div>
-
-    <!-- Lunch Card -->
-    <div class="menu-card">
-      <span class="badge">Dopahar Ka Lunch (12:30 PM - 2:30 PM)</span>
-      <h2 class="card-title">Special Lunch Thali</h2>
-      <p class="card-items">Dal Makhani • Shahi Paneer • 4 Butter Tawa Roti • Jeera Rice • Salad & Achar</p>
-      <div class="card-footer">
-        <span class="price">₹120</span>
-        <div class="qty-control">
-          <button class="qty-btn" onclick="updateQty('lunch', -1)">-</button>
-          <span class="qty-display" id="qty-lunch">1</span>
-          <button class="qty-btn" onclick="updateQty('lunch', 1)">+</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Dinner Card -->
-    <div class="menu-card">
-      <span class="badge">Raat Ka Dinner (7:30 PM - 9:30 PM)</span>
-      <h2 class="card-title">Special Dinner Thali</h2>
-      <p class="card-items">Yellow Dal Tadka • Mix Veg / Aloo Gobhi • 4 Fresh Tawa Roti • Rice • Green Salad</p>
-      <div class="card-footer">
-        <span class="price">₹110</span>
-        <div class="qty-control">
-          <button class="qty-btn" onclick="updateQty('dinner', -1)">-</button>
-          <span class="qty-display" id="qty-dinner">0</span>
-          <button class="qty-btn" onclick="updateQty('dinner', 1)">+</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Delivery Details -->
-    <div class="input-box">
-      <label>Aapka Naam</label>
-      <input type="text" id="custName" placeholder="Jaise: Aman Sharma">
-      <label style="margin-top: 10px;">Delivery Address / Room No.</label>
-      <textarea id="custAddr" rows="2" placeholder="Gali No, Flat / Office No, Landmark"></textarea>
-    </div>
+  <!-- Categories Tab -->
+  <div class="category-scroll">
+    <button class="cat-btn active" onclick="filterItems('all', this)">All Meals</button>
+    <button class="cat-btn" onclick="filterItems('gym', this)">💪 Gym & High Protein</button>
+    <button class="cat-btn" onclick="filterItems('thali', this)">🍛 Ghar Ki Thali</button>
+    <button class="cat-btn" onclick="filterItems('trial', this)">🔥 Trial Offers</button>
   </div>
 
-  <div class="bottom-bar">
-    <div>
-      <div class="total-text">Total Bill:</div>
-      <div class="total-amt" id="totalDisplay">₹120</div>
+  <!-- Menu Feed -->
+  <main class="main-feed" id="menuFeed">
+
+    <!-- Trial Meal -->
+    <div class="item-card" data-category="trial">
+      <div class="badge-wrap">
+        <span class="tag tag-trial">Trial Special</span>
+      </div>
+      <div class="card-top">
+        <div class="item-info">
+          <div class="item-title">Trial Mini Tiffin</div>
+          <div class="item-desc">Dal Tadka, Seasonal Sabzi, 4 Butter Tawa Roti, Jeera Rice, Salad & Achar.</div>
+          <div class="macros-strip">
+            <span class="macro-pill pro">14g Protein</span>
+            <span class="macro-pill">480 kcal</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-actions">
+        <div class="price-tag">₹70</div>
+        <div class="qty-box">
+          <button class="qty-btn" onclick="changeQty('trial', -1)">-</button>
+          <span class="qty-count" id="qty-trial">1</span>
+          <button class="qty-btn" onclick="changeQty('trial', 1)">+</button>
+        </div>
+      </div>
     </div>
-    <button class="order-btn" onclick="sendOrder()">
-      WhatsApp Order 👉
-    </button>
+
+    <!-- Gym Meal 1: Paneer Fitness Meal -->
+    <div class="item-card" data-category="gym">
+      <div class="badge-wrap">
+        <span class="tag tag-gym">High Protein (Veg)</span>
+      </div>
+      <div class="card-top">
+        <div class="item-info">
+          <div class="item-title">Paneer Power Gym Bowl</div>
+          <div class="item-desc">200g Low-fat Paneer Bhurji / Grilled Paneer, Boiled Sprouts Chaat, 3 Multigrain Roti, Cucumber Salad. Zero refined oil.</div>
+          <div class="macros-strip">
+            <span class="macro-pill pro">🔥 38g Protein</span>
+            <span class="macro-pill">540 kcal</span>
+            <span class="macro-pill">18g Fat</span>
+            <span class="macro-pill">42g Carbs</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-actions">
+        <div class="price-tag">₹160</div>
+        <div class="qty-box">
+          <button class="qty-btn" onclick="changeQty('gym_paneer', -1)">-</button>
+          <span class="qty-count" id="qty-gym_paneer">0</span>
+          <button class="qty-btn" onclick="changeQty('gym_paneer', 1)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gym Meal 2: Soya Chunk Protein Meal -->
+    <div class="item-card" data-category="gym">
+      <div class="badge-wrap">
+        <span class="tag tag-gym">Lean Muscle / Budget Gym</span>
+      </div>
+      <div class="card-top">
+        <div class="item-info">
+          <div class="item-title">High Protein Soya & Dal Bowl</div>
+          <div class="item-desc">Spicy Nutri Soya Chunks Curry (80g dry equiv.), Thick Chana Dal, Brown Rice / 3 Multigrain Rotis, Onion Salad.</div>
+          <div class="macros-strip">
+            <span class="macro-pill pro">🔥 45g Protein</span>
+            <span class="macro-pill">510 kcal</span>
+            <span class="macro-pill">8g Fat</span>
+            <span class="macro-pill">58g Carbs</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-actions">
+        <div class="price-tag">₹130</div>
+        <div class="qty-box">
+          <button class="qty-btn" onclick="changeQty('gym_soya', -1)">-</button>
+          <span class="qty-count" id="qty-gym_soya">0</span>
+          <button class="qty-btn" onclick="changeQty('gym_soya', 1)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ghar Ki Thali: Deluxe Lunch -->
+    <div class="item-card" data-category="thali">
+      <div class="badge-wrap">
+        <span class="tag tag-classic">Lunch Special</span>
+      </div>
+      <div class="card-top">
+        <div class="item-info">
+          <div class="item-title">Deluxe Ghar Ka Lunch</div>
+          <div class="item-desc">Special Dal Makhani / Dal Tadka, Shahi Paneer, 4 Fresh Butter Rotis, Steamed Rice, Sweet / Raita, Achar.</div>
+          <div class="macros-strip">
+            <span class="macro-pill pro">22g Protein</span>
+            <span class="macro-pill">620 kcal</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-actions">
+        <div class="price-tag">₹120</div>
+        <div class="qty-box">
+          <button class="qty-btn" onclick="changeQty('lunch', -1)">-</button>
+          <span class="qty-count" id="qty-lunch">0</span>
+          <button class="qty-btn" onclick="changeQty('lunch', 1)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ghar Ki Thali: Light Dinner -->
+    <div class="item-card" data-category="thali">
+      <div class="badge-wrap">
+        <span class="tag tag-classic">Dinner Special</span>
+      </div>
+      <div class="card-top">
+        <div class="item-info">
+          <div class="item-title">Healthy Home Dinner</div>
+          <div class="item-desc">Moong Dal / Yellow Dal, Sukhi Seasonal Sabzi, 4 Tawa Rotis, Rice, Fresh Salad. Light on stomach.</div>
+          <div class="macros-strip">
+            <span class="macro-pill pro">16g Protein</span>
+            <span class="macro-pill">490 kcal</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-actions">
+        <div class="price-tag">₹110</div>
+        <div class="qty-box">
+          <button class="qty-btn" onclick="changeQty('dinner', -1)">-</button>
+          <span class="qty-count" id="qty-dinner">0</span>
+          <button class="qty-btn" onclick="changeQty('dinner', 1)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Customer Details -->
+    <div class="checkout-form">
+      <h3>📍 Delivery Details (Kharar)</h3>
+      <input type="text" id="custName" class="input-field" placeholder="Aapka Naam">
+      <textarea id="custAddr" class="input-field" rows="2" placeholder="Society / Flat / PG No, Sector / Colony, Kharar"></textarea>
+    </div>
+
+  </main>
+
+  <!-- Sticky Domino's Style Cart Bar -->
+  <div class="cart-bottom-bar">
+    <div class="cart-inner">
+      <div class="cart-summary">
+        <div class="items-count" id="cartItemsCount">1 ITEM SELECTED</div>
+        <div class="grand-total" id="cartTotal">₹70</div>
+      </div>
+      <button class="btn-checkout" onclick="checkoutOrder()">
+        <span>WhatsApp Order</span> 👉
+      </button>
+    </div>
   </div>
 
   <script>
-    const prices = { lunch: 120, dinner: 110 };
-    let counts = { lunch: 1, dinner: 0 };
-    const myWhatsAppNumber = "916239813663"; // <-- Yahan apna 10-digit WhatsApp number daalein (country code 91 ke sath)
+    const items = {
+      trial: { name: "Trial Mini Tiffin", price: 70, qty: 1, protein: "14g" },
+      gym_paneer: { name: "Paneer Power Gym Bowl", price: 160, qty: 0, protein: "38g" },
+      gym_soya: { name: "High Protein Soya & Dal Bowl", price: 130, qty: 0, protein: "45g" },
+      lunch: { name: "Deluxe Ghar Ka Lunch", price: 120, qty: 0, protein: "22g" },
+      dinner: { name: "Healthy Home Dinner", price: 110, qty: 0, protein: "16g" }
+    };
 
-    function updateQty(type, change) {
-      counts[type] = Math.max(0, counts[type] + change);
-      document.getElementById('qty-' + type).innerText = counts[type];
-      calcTotal();
+    const WHATSAPP_PHONE = "91998828360"; // Aapka Kharar order number
+
+    function changeQty(key, delta) {
+      items[key].qty = Math.max(0, items[key].qty + delta);
+      document.getElementById('qty-' + key).innerText = items[key].qty;
+      updateCart();
     }
 
-    function calcTotal() {
-      const total = (counts.lunch * prices.lunch) + (counts.dinner * prices.dinner);
-      document.getElementById('totalDisplay').innerText = "₹" + total;
+    function updateCart() {
+      let total = 0;
+      let count = 0;
+      for (const k in items) {
+        total += items[k].qty * items[k].price;
+        count += items[k].qty;
+      }
+      document.getElementById('cartTotal').innerText = '₹' + total;
+      document.getElementById('cartItemsCount').innerText = `${count} ${count === 1 ? 'ITEM' : 'ITEMS'} SELECTED`;
     }
 
-    function sendOrder() {
+    function filterItems(category, el) {
+      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+
+      const cards = document.querySelectorAll('.item-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function checkoutOrder() {
       const name = document.getElementById('custName').value.trim();
       const addr = document.getElementById('custAddr').value.trim();
 
-      if (counts.lunch === 0 && counts.dinner === 0) {
-        alert("Kam se kam ek tiffin select karein!");
+      let orderList = [];
+      let grandTotal = 0;
+
+      for (const k in items) {
+        if (items[k].qty > 0) {
+          orderList.push(`• ${items[k].name} (x${items[k].qty}) [${items[k].protein} Prot] = ₹${items[k].qty * items[k].price}`);
+          grandTotal += items[k].qty * items[k].price;
+        }
+      }
+
+      if (orderList.length === 0) {
+        alert("Kripya kam se kam ek meal select karein!");
         return;
       }
       if (!name || !addr) {
-        alert("Kripya apna naam aur address daalein.");
+        alert("Kripya apna naam aur Kharar ka delivery address daalein.");
         return;
       }
 
-      let orderSummary = `*Naya Tiffin Order - Ghar Se Tiffin*\n`;
-      orderSummary += `--------------------------\n`;
-      orderSummary += `👤 *Customer:* ${name}\n`;
-      orderSummary += `📍 *Address:* ${addr}\n`;
-      orderSummary += `--------------------------\n`;
-      if (counts.lunch > 0) orderSummary += `🍱 Lunch Thali: ${counts.lunch} plate\n`;
-      if (counts.dinner > 0) orderSummary += `🍱 Dinner Thali: ${counts.dinner} plate\n`;
-      orderSummary += `--------------------------\n`;
-      orderSummary += `💰 *Total Amount:* ₹${(counts.lunch * prices.lunch) + (counts.dinner * prices.dinner)}\n\n`;
-      orderSummary += `Kripya mera order confirm karein!`;
+      let msg = `*Ghar Se Tiffin - Naya Order*\n`;
+      msg += `------------------------------------\n`;
+      msg += `👤 *Customer:* ${name}\n`;
+      msg += `📍 *Delivery Address:* ${addr}\n`;
+      msg += `------------------------------------\n`;
+      msg += `*Ordered Items:*\n`;
+      msg += orderList.join('\n') + `\n`;
+      msg += `------------------------------------\n`;
+      msg += `💰 *Grand Total:* ₹${grandTotal}\n\n`;
+      msg += `Bhai ye order confirm karke delivery time bata dijiye!`;
 
-      const url = `https://wa.me/${myWhatsAppNumber}?text=${encodeURIComponent(orderSummary)}`;
+      const url = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`;
       window.open(url, '_blank');
     }
 
-    // PWA Service Worker Registration
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').catch(err => console.log(err));
     }
-
-    // Install App prompt
-    let deferredPrompt;
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      document.getElementById('pwaBanner').style.display = 'flex';
-    });
-
-    document.getElementById('installAppBtn').addEventListener('click', async () => {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-        if (outcome === 'accepted') {
-          document.getElementById('pwaBanner').style.display = 'none';
-        }
-        deferredPrompt = null;
-      }
-    });
   </script>
 </body>
 </html>
