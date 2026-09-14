@@ -1,8 +1,0 @@
-{
-  "name": "Ghar Se Tiffin",
-  "short_name": "GharTiffin",
-  "start_url": "./",
-  "display": "standalone",
-  "background_color": "#fffbeb",
-  "theme_color": "#ea580c"
-}
