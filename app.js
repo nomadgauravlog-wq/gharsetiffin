@@ -1,6 +1,6 @@
 // APNA WHATSAPP NUMBER YAHAN DALEIN (Country code 91 ke sath, 10 digits)
-// Poster par number: 998828360 (agar 10th digit bacha ho toh update karein)
-const STORE_WHATSAPP = "91998828360"; 
+// Poster par number: 6239813663 (agar 10th digit bacha ho toh update karein)
+const STORE_WHATSAPP = "916239813663"; 
 
 // 7-DAY ROTATIONAL MENU (INDIAN HOMESTYLE)
 const weeklySchedule = {
