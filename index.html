@@ -4,219 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Ghar Se Tiffin - Fresh & Fit (Kharar)</title>
-  <meta name="theme-color" content="#0f172a">
+  <meta name="theme-color" content="#dc2626">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #ea580c;
-      --primary-dark: #c2410c;
-      --bg: #f8fafc;
-      --surface: #ffffff;
-      --text: #0f172a;
-      --muted: #64748b;
-      --border: #e2e8f0;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
-    body { background: var(--bg); color: var(--text); padding-bottom: 110px; }
-
-    .app-header {
-      background: #0f172a;
-      color: white;
-      padding: 16px 20px 18px;
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-    }
-    .brand-title { font-size: 20px; font-weight: 800; display: flex; align-items: center; gap: 8px; }
-    .loc-tag { font-size: 11px; color: #94a3b8; margin-top: 3px; }
-
-    .day-strip {
-      background: #ffedd5;
-      color: #9a3412;
-      padding: 8px 16px;
-      font-size: 12px;
-      font-weight: 700;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #fed7aa;
-    }
-
-    .category-scroll {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding: 12px 16px;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 64px;
-      z-index: 40;
-      scrollbar-width: none;
-    }
-    .category-scroll::-webkit-scrollbar { display: none; }
-    .cat-btn {
-      white-space: nowrap;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 700;
-      background: #f1f5f9;
-      color: var(--muted);
-      border: 1px solid transparent;
-      cursor: pointer;
-    }
-    .cat-btn.active { background: #0f172a; color: #ffffff; }
-
-    .main-feed { max-width: 520px; margin: 0 auto; padding: 14px; }
-
-    .notice-box {
-      background: #fffbeb;
-      border: 1px dashed #d97706;
-      border-radius: 12px;
-      padding: 10px 14px;
-      margin-bottom: 14px;
-      font-size: 12px;
-      color: #92400e;
-      line-height: 1.4;
-    }
-
-    .item-card {
-      background: var(--surface);
-      border-radius: 16px;
-      padding: 15px;
-      margin-bottom: 14px;
-      border: 1px solid var(--border);
-      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
-    }
-    .badge-wrap { display: flex; gap: 6px; margin-bottom: 6px; align-items: center; }
-    .tag {
-      font-size: 10px;
-      font-weight: 800;
-      padding: 3px 8px;
-      border-radius: 6px;
-      text-transform: uppercase;
-    }
-    .tag-trial { background: #fef08a; color: #854d0e; }
-    .tag-gym-bf { background: #e0e7ff; color: #3730a3; }
-    .tag-gym-lunch { background: #dbeafe; color: #1e40af; }
-    .tag-gym-dinner { background: #f3e8ff; color: #6b21a8; }
-    .tag-thali { background: #ffedd5; color: #9a3412; }
-
-    .item-title { font-size: 16px; font-weight: 700; color: #0f172a; }
-    .item-desc { font-size: 12px; color: var(--muted); line-height: 1.45; margin-top: 5px; }
-
-    .macros-strip { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
-    .macro-pill {
-      background: #f1f5f9;
-      border-radius: 6px;
-      padding: 3px 8px;
-      font-size: 11px;
-      font-weight: 700;
-      color: #334155;
-    }
-    .macro-pill.pro { background: #dcfce7; color: #166534; font-weight: 800; }
-
-    .card-actions {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 12px;
-      padding-top: 10px;
-      border-top: 1px dashed var(--border);
-    }
-    .price-tag { font-size: 18px; font-weight: 800; color: #0f172a; }
-
-    .qty-box {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: #f8fafc;
-      border: 1px solid var(--border);
-      padding: 4px 8px;
-      border-radius: 8px;
-    }
-    .qty-btn {
-      width: 28px;
-      height: 28px;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      font-weight: 800;
-      font-size: 15px;
-      color: var(--primary);
-      cursor: pointer;
-    }
-    .qty-count { font-size: 14px; font-weight: 800; min-width: 16px; text-align: center; }
-
-    .checkout-form {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 16px;
-      margin-top: 18px;
-    }
-    .checkout-form h3 { font-size: 13px; font-weight: 800; margin-bottom: 10px; color: #334155; text-transform: uppercase; }
-    .input-field {
-      width: 100%;
-      border: 1px solid var(--border);
-      padding: 10px 12px;
-      border-radius: 8px;
-      font-size: 13px;
-      margin-bottom: 10px;
-      outline: none;
-    }
-    .input-field:focus { border-color: var(--primary); }
-
-    .cart-bottom-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: #ffffff;
-      padding: 12px 18px;
-      border-top: 1px solid var(--border);
-      box-shadow: 0 -6px 20px rgba(0,0,0,0.06);
-      z-index: 100;
-    }
-    .cart-inner {
-      max-width: 520px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .cart-summary .items-count { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; }
-    .cart-summary .grand-total { font-size: 20px; font-weight: 800; color: #0f172a; }
-
-    .btn-checkout {
-      background: #25D366;
-      color: white;
-      font-weight: 800;
-      font-size: 14px;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      cursor: pointer;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header class="app-header">
     <div class="brand-title">Ghar Se Tiffin 🍱</div>
-    <div class="loc-tag">📍 Fresh Homemade & Fitness Meals • Serving Kharar</div>
+    <div class="loc-tag">📍 Serving Fresh Homemade & Fitness Food in Kharar</div>
   </header>
 
   <div class="day-strip">
     <span id="todayDate">Today's Menu</span>
-    <span>Daily Fresh Rotation</span>
+    <span>Daily Fresh Meals</span>
   </div>
 
   <div class="category-scroll">
@@ -229,227 +32,259 @@
   <main class="main-feed">
 
     <div class="notice-box">
-      ⚠️ <strong>Trial Tiffin Policy:</strong> Trial meal (₹70) is valid strictly <strong>1 time per new customer/mobile number</strong>. Repeated orders from the same number will be billed at regular menu rates.
+      ⚠️ <strong>Trial Tiffin Policy:</strong> Trial meal (₹70) is valid strictly <strong>1 time per new customer/mobile number</strong>. Repeat orders are billed at regular menu rates.
     </div>
 
     <!-- Trial Item -->
     <div class="item-card" data-cat="trial">
-      <div class="badge-wrap">
-        <span class="tag tag-trial">1-Time User Only</span>
+      <div class="item-img-wrap">
+        <img class="item-img" src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=600&q=80" alt="Trial Thali">
+        <span class="img-badge">1st Order Offer</span>
       </div>
-      <div class="item-title">Trial Mini Tiffin</div>
-      <div class="item-desc">Fresh Dal + Seasonal Sukhi Sabzi + 4 Tawa Roti + Rice + Salad & Achar. Experience the real ghar ka taste.</div>
-      <div class="macros-strip">
-        <span class="macro-pill pro">14g Protein</span>
-        <span class="macro-pill">480 kcal</span>
-      </div>
-      <div class="card-actions">
-        <div class="price-tag">₹70</div>
-        <div class="qty-box">
-          <button class="qty-btn" onclick="modifyQty('trial', -1)">-</button>
-          <span class="qty-count" id="qty-trial">1</span>
-          <button class="qty-btn" onclick="modifyQty('trial', 1)">+</button>
+      <div class="card-body">
+        <div class="item-title">Trial Mini Tiffin</div>
+        <div class="item-desc">Fresh Dal + Seasonal Sukhi Sabzi + 4 Tawa Roti + Rice + Salad & Achar.</div>
+        <div class="macros-strip">
+          <span class="macro-pill pro">14g Protein</span>
+          <span class="macro-pill">480 kcal</span>
+        </div>
+        <div class="card-actions">
+          <div class="price-tag">₹70</div>
+          <div class="qty-box">
+            <button class="qty-btn" onclick="modifyQty('trial', -1)">-</button>
+            <span class="qty-count" id="qty-trial">1</span>
+            <button class="qty-btn" onclick="modifyQty('trial', 1)">+</button>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- GYM 1 -->
     <div class="item-card" data-cat="gym">
-      <div class="badge-wrap">
-        <span class="tag tag-gym-bf">Breakfast • Light & Crisp</span>
+      <div class="item-img-wrap">
+        <img class="item-img" src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" alt="Sprouts Salad">
+        <span class="img-badge">Breakfast • Light</span>
       </div>
-      <div class="item-title">Sprouts & Paneer Power Salad Bowl</div>
-      <div class="item-desc">Boiled sprouts, 100g fresh paneer cubes, tomatoes, cucumber, lemon dressing with roasted jeera. Zero oil.</div>
-      <div class="macros-strip">
-        <span class="macro-pill pro">🔥 24g Protein</span>
-        <span class="macro-pill">310 kcal</span>
-      </div>
-      <div class="card-actions">
-        <div class="price-tag">₹110</div>
-        <div class="qty-box">
-          <button class="qty-btn" onclick="modifyQty('gym_sprouts', -1)">-</button>
-          <span class="qty-count" id="qty-gym_sprouts">0</span>
-          <button class="qty-btn" onclick="modifyQty('gym_sprouts', 1)">+</button>
+      <div class="card-body">
+        <div class="item-title">Sprouts & Paneer Power Salad Bowl</div>
+        <div class="item-desc">Boiled sprouts, 100g fresh paneer cubes, tomatoes, cucumber, lemon dressing & roasted jeera. Zero oil.</div>
+        <div class="macros-strip">
+          <span class="macro-pill pro">🔥 24g Protein</span>
+          <span class="macro-pill">310 kcal</span>
+        </div>
+        <div class="card-actions">
+          <div class="price-tag">₹110</div>
+          <div class="qty-box">
+            <button class="qty-btn" onclick="modifyQty('gym_sprouts', -1)">-</button>
+            <span class="qty-count" id="qty-gym_sprouts">0</span>
+            <button class="qty-btn" onclick="modifyQty('gym_sprouts', 1)">+</button>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- GYM 2 -->
     <div class="item-card" data-cat="gym">
-      <div class="badge-wrap">
-        <span class="tag tag-gym-bf">Breakfast • Muscle Recovery</span>
+      <div class="item-img-wrap">
+        <img class="item-img" src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80" alt="Paneer Bhurji">
+        <span class="img-badge">Breakfast • Muscle Recovery</span>
       </div>
-      <div class="item-title">Desi Paneer Bhurji + 2 Multigrain Roti</div>
-      <div class="item-desc">150g Low-oil paneer bhurji cooked with veggies + 2 multigrain rotis + mint chutney & onions.</div>
-      <div class="macros-strip">
-        <span class="macro-pill pro">🔥 28g Protein</span>
-        <span class="macro-pill">390 kcal</span>
-      </div>
-      <div class="card-actions">
-        <div class="price-tag">₹130</div>
-        <div class="qty-box">
-          <button class="qty-btn" onclick="modifyQty('gym_bhurji', -1)">-</button>
-          <span class="qty-count" id="qty-gym_bhurji">0</span>
-          <button class="qty-btn" onclick="modifyQty('gym_bhurji', 1)">+</button>
+      <div class="card-body">
+        <div class="item-title">Desi Paneer Bhurji + 2 Multigrain Roti</div>
+        <div class="item-desc">150g Low-oil paneer bhurji with chopped veggies + 2 wholesome multigrain rotis + mint chutney.</div>
+        <div class="macros-strip">
+          <span class="macro-pill pro">🔥 28g Protein</span>
+          <span class="macro-pill">390 kcal</span>
+        </div>
+        <div class="card-actions">
+          <div class="price-tag">₹130</div>
+          <div class="qty-box">
+            <button class="qty-btn" onclick="modifyQty('gym_bhurji', -1)">-</button>
+            <span class="qty-count" id="qty-gym_bhurji">0</span>
+            <button class="qty-btn" onclick="modifyQty('gym_bhurji', 1)">+</button>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- GYM 3 -->
     <div class="item-card" data-cat="gym">
-      <div class="badge-wrap">
-        <span class="tag tag-gym-lunch">Lunch • Heavy Muscle Builder</span>
+      <div class="item-img-wrap">
+        <img class="item-img" src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=600&q=80" alt="Paneer Meal">
+        <span class="img-badge">Lunch • Heavy Muscle</span>
       </div>
-      <div class="item-title">Paneer Beast Meal (200g Paneer + Dal)</div>
-      <div class="item-desc">200g Cottage paneer curry/bhurji + thick high-protein dal + brown rice or 3 multigrain rotis + salad.</div>
-      <div class="macros-strip">
-        <span class="macro-pill pro">🔥 40g Protein</span>
-        <span class="macro-pill">580 kcal</span>
-      </div>
-      <div class="card-actions">
-        <div class="price-tag">₹160</div>
-        <div class="qty-box">
-          <button class="qty-btn" onclick="modifyQty('gym_paneer_lunch', -1)">-</button>
-          <span class="qty-count" id="qty-gym_paneer_lunch">0</span>
-          <button class="qty-btn" onclick="modifyQty('gym_paneer_lunch', 1)">+</button>
+      <div class="card-body">
+        <div class="item-title">Paneer Beast Meal (200g Paneer + Dal)</div>
+        <div class="item-desc">200g Cottage paneer curry + thick high-protein dal + brown rice or 3 multigrain rotis + cucumber salad.</div>
+        <div class="macros-strip">
+          <span class="macro-pill pro">🔥 40g Protein</span>
+          <span class="macro-pill">580 kcal</span>
+        </div>
+        <div class="card-actions">
+          <div class="price-tag">₹160</div>
+          <div class="qty-box">
+            <button class="qty-btn" onclick="modifyQty('gym_paneer_lunch', -1)">-</button>
+            <span class="qty-count" id="qty-gym_paneer_lunch">0</span>
+            <button class="qty-btn" onclick="modifyQty('gym_paneer_lunch', 1)">+</button>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- GYM 4 -->
     <div class="item-card" data-cat="gym">
-      <div class="badge-wrap">
-        <span class="tag tag-gym-lunch">Lunch • Lean Bulk Soya Meal</span>
+      <div class="item-img-wrap">
+        <img class="item-img" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80" alt="Soya Curry">
+        <span class="img-badge">Lunch • Lean Soya</span>
       </div>
-      <div class="item-title">High-Protein Soya Chunk Curry + Rice/Roti</div>
-      <div class="item-desc">80g Dried equivalent soft soya chunks cooked in light home gravy + yellow dal + 3 rotis / brown rice + salad.</div>
-      <div class="macros-strip">
-        <span class="macro-pill pro">🔥 46g Protein</span>
-        <span class="macro-pill">520 kcal</span>
-      </div>
-      <div class="card-actions">
-        <div class="price-tag">₹120</div>
-        <div class="qty-box">
-          <button class="qty-btn" onclick="modifyQty('gym_soya_lunch', -1)">-</button>
-          <span class="qty-count" id="qty-gym_soya_lunch">0</span>
-          <button class="qty-btn" onclick="modifyQty('gym_soya_lunch', 1)">+</button>
+      <div class="card-body">
+        <div class="item-title">High-Protein Soya Curry + Rice/Roti</div>
+        <div class="item-desc">80g Dried equivalent soft soya chunks cooked in light home gravy + yellow dal + 3 rotis / brown rice + salad.</div>
+        <div class="macros-strip">
+          <span class="macro-pill pro">🔥 46g Protein</span>
+          <span class="macro-pill">520 kcal</span>
+        </div>
+        <div class="card-actions">
+          <div class="price-tag">₹120</div>
+          <div class="qty-box">
+            <button class="qty-btn" onclick="modifyQty('gym_soya_lunch', -1)">-</button>
+            <span class="qty-count" id="qty-gym_soya_lunch">0</span>
+            <button class="qty-btn" onclick="modifyQty('gym_soya_lunch', 1)">+</button>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- GYM 5 -->
     <div class="item-card" data-cat="gym">
-      <div class="badge-wrap">
-        <span class="tag tag-gym-lunch">Lunch • Clean Protein</span>
+      <div class="item-img-wrap">
+        <img class="item-img" src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80" alt="Double Dal Bowl">
+        <span class="img-badge">Lunch • Clean Vegan</span>
       </div>
-      <div class="item-title">Double Dal & Tofu/Paneer Power Bowl</div>
-      <div class="item-desc">High protein double chana dal tadka + 120g sautéed tofu/paneer + brown rice bowl + cucumber slices.</div>
-      <div class="macros-strip">
-        <span class="macro-pill pro">🔥 32g Protein</span>
-        <span class="macro-pill">470 kcal</span>
-      </div>
-      <div class="card-actions">
-        <div class="price-tag">₹140</div>
-        <div class="qty-box">
-          <button class="qty-btn" onclick="modifyQty('gym_double_dal', -1)">-</button>
-          <span class="qty-count" id="qty-gym_double_dal">0</span>
-          <button class="qty-btn" onclick="modifyQty('gym_double_dal', 1)">+</button>
+      <div class="card-body">
+        <div class="item-title">Double Dal & Tofu/Paneer Bowl</div>
+        <div class="item-desc">High protein double chana dal tadka + 120g sautéed tofu/paneer + brown rice bowl + fiber cucumber slices.</div>
+        <div class="macros-strip">
+          <span class="macro-pill pro">🔥 32g Protein</span>
+          <span class="macro-pill">470 kcal</span>
+        </div>
+        <div class="card-actions">
+          <div class="price-tag">₹140</div>
+          <div class="qty-box">
+            <button class="qty-btn" onclick="modifyQty('gym_double_dal', -1)">-</button>
+            <span class="qty-count" id="qty-gym_double_dal">0</span>
+            <button class="qty-btn" onclick="modifyQty('gym_double_dal', 1)">+</button>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- GYM 6 -->
     <div class="item-card" data-cat="gym">
-      <div class="badge-wrap">
-        <span class="tag tag-gym-dinner">Dinner • Night Repair (Low Carb)</span>
+      <div class="item-img-wrap">
+        <img class="item-img" src="https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=600&q=80" alt="Paneer Tikka Salad">
+        <span class="img-badge">Dinner • Night Repair</span>
       </div>
-      <div class="item-title">Grilled Herb Paneer Tikka Salad</div>
-      <div class="item-desc">180g Tawa grilled marinated paneer + bell peppers, onions, chaat masala, lemon dressing. No heavy rotis.</div>
-      <div class="macros-strip">
-        <span class="macro-pill pro">🔥 32g Protein</span>
-        <span class="macro-pill">360 kcal</span>
-      </div>
-      <div class="card-actions">
-        <div class="price-tag">₹150</div>
-        <div class="qty-box">
-          <button class="qty-btn" onclick="modifyQty('gym_tikka_dinner', -1)">-</button>
-          <span class="qty-count" id="qty-gym_tikka_dinner">0</span>
-          <button class="qty-btn" onclick="modifyQty('gym_tikka_dinner', 1)">+</button>
+      <div class="card-body">
+        <div class="item-title">Grilled Herb Paneer Tikka Salad</div>
+        <div class="item-desc">180g Tawa grilled marinated paneer + bell peppers, onions, chaat masala, lemon dressing. Zero maida.</div>
+        <div class="macros-strip">
+          <span class="macro-pill pro">🔥 32g Protein</span>
+          <span class="macro-pill">360 kcal</span>
+        </div>
+        <div class="card-actions">
+          <div class="price-tag">₹150</div>
+          <div class="qty-box">
+            <button class="qty-btn" onclick="modifyQty('gym_tikka_dinner', -1)">-</button>
+            <span class="qty-count" id="qty-gym_tikka_dinner">0</span>
+            <button class="qty-btn" onclick="modifyQty('gym_tikka_dinner', 1)">+</button>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- GYM 7 -->
     <div class="item-card" data-cat="gym">
-      <div class="badge-wrap">
-        <span class="tag tag-gym-dinner">Dinner • Soya Veggie Stir-Fry</span>
+      <div class="item-img-wrap">
+        <img class="item-img" src="https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?auto=format&fit=crop&w=600&q=80" alt="Soya Stir Fry">
+        <span class="img-badge">Dinner • Soya Veggie</span>
       </div>
-      <div class="item-title">Soya Chunk Veggie Stir-Fry Bowl</div>
-      <div class="item-desc">60g Boiled soya chunks sautéed with beans, capsicum, onions, mild spices + 2 light phulkas.</div>
-      <div class="macros-strip">
-        <span class="macro-pill pro">🔥 36g Protein</span>
-        <span class="macro-pill">390 kcal</span>
-      </div>
-      <div class="card-actions">
-        <div class="price-tag">₹110</div>
-        <div class="qty-box">
-          <button class="qty-btn" onclick="modifyQty('gym_soya_dinner', -1)">-</button>
-          <span class="qty-count" id="qty-gym_soya_dinner">0</span>
-          <button class="qty-btn" onclick="modifyQty('gym_soya_dinner', 1)">+</button>
+      <div class="card-body">
+        <div class="item-title">Soya Chunk Veggie Stir-Fry Bowl</div>
+        <div class="item-desc">60g Boiled soya chunks sautéed with beans, capsicum, onions, mild garlic sauce + 2 light phulkas.</div>
+        <div class="macros-strip">
+          <span class="macro-pill pro">🔥 36g Protein</span>
+          <span class="macro-pill">390 kcal</span>
+        </div>
+        <div class="card-actions">
+          <div class="price-tag">₹110</div>
+          <div class="qty-box">
+            <button class="qty-btn" onclick="modifyQty('gym_soya_dinner', -1)">-</button>
+            <span class="qty-count" id="qty-gym_soya_dinner">0</span>
+            <button class="qty-btn" onclick="modifyQty('gym_soya_dinner', 1)">+</button>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Daily Lunch -->
     <div class="item-card" data-cat="thali">
-      <div class="badge-wrap">
-        <span class="tag tag-thali">Daily Lunch (12:30 PM - 2:30 PM)</span>
+      <div class="item-img-wrap">
+        <img class="item-img" src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80" alt="Lunch Thali">
+        <span class="img-badge">Daily Lunch</span>
       </div>
-      <div class="item-title">Daily Regular Lunch Thali</div>
-      <div class="item-desc" id="lunchMenuDesc">Dal Tadka + Seasonal Sabzi + 4 Tawa Roti + Rice + Salad</div>
-      <div class="macros-strip">
-        <span class="macro-pill pro">18g Protein</span>
-        <span class="macro-pill">540 kcal</span>
-      </div>
-      <div class="card-actions">
-        <div class="price-tag">₹80</div>
-        <div class="qty-box">
-          <button class="qty-btn" onclick="modifyQty('daily_lunch', -1)">-</button>
-          <span class="qty-count" id="qty-daily_lunch">0</span>
-          <button class="qty-btn" onclick="modifyQty('daily_lunch', 1)">+</button>
+      <div class="card-body">
+        <div class="item-title">Daily Regular Lunch Thali</div>
+        <div class="item-desc" id="lunchMenuDesc">Dal Tadka + Seasonal Sabzi + 4 Tawa Roti + Rice + Salad</div>
+        <div class="macros-strip">
+          <span class="macro-pill pro">18g Protein</span>
+          <span class="macro-pill">540 kcal</span>
+        </div>
+        <div class="card-actions">
+          <div class="price-tag">₹80</div>
+          <div class="qty-box">
+            <button class="qty-btn" onclick="modifyQty('daily_lunch', -1)">-</button>
+            <span class="qty-count" id="qty-daily_lunch">0</span>
+            <button class="qty-btn" onclick="modifyQty('daily_lunch', 1)">+</button>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Daily Dinner -->
     <div class="item-card" data-cat="thali">
-      <div class="badge-wrap">
-        <span class="tag tag-thali">Daily Dinner (7:30 PM - 9:30 PM)</span>
+      <div class="item-img-wrap">
+        <img class="item-img" src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=600&q=80" alt="Dinner Thali">
+        <span class="img-badge">Daily Dinner</span>
       </div>
-      <div class="item-title">Daily Regular Dinner Thali</div>
-      <div class="item-desc" id="dinnerMenuDesc">Moong Dal Fry + Aloo Matar/Sabzi + 4 Tawa Roti + Rice + Salad</div>
-      <div class="macros-strip">
-        <span class="macro-pill pro">16g Protein</span>
-        <span class="macro-pill">480 kcal</span>
-      </div>
-      <div class="card-actions">
-        <div class="price-tag">₹80</div>
-        <div class="qty-box">
-          <button class="qty-btn" onclick="modifyQty('daily_dinner', -1)">-</button>
-          <span class="qty-count" id="qty-daily_dinner">0</span>
-          <button class="qty-btn" onclick="modifyQty('daily_dinner', 1)">+</button>
+      <div class="card-body">
+        <div class="item-title">Daily Regular Dinner Thali</div>
+        <div class="item-desc" id="dinnerMenuDesc">Moong Dal Fry + Aloo Matar/Sabzi + 4 Tawa Roti + Rice + Salad</div>
+        <div class="macros-strip">
+          <span class="macro-pill pro">16g Protein</span>
+          <span class="macro-pill">480 kcal</span>
+        </div>
+        <div class="card-actions">
+          <div class="price-tag">₹80</div>
+          <div class="qty-box">
+            <button class="qty-btn" onclick="modifyQty('daily_dinner', -1)">-</button>
+            <span class="qty-count" id="qty-daily_dinner">0</span>
+            <button class="qty-btn" onclick="modifyQty('daily_dinner', 1)">+</button>
+          </div>
         </div>
       </div>
     </div>
 
+    <!-- Delivery Form -->
     <div class="checkout-form">
       <h3>📍 Delivery Details (Kharar)</h3>
       <input type="text" id="custName" class="input-field" placeholder="Aapka Naam">
-      <textarea id="custAddr" class="input-field" rows="2" placeholder="House/Flat/PG No, Society, Landmark, Kharar"></textarea>
+      <textarea id="custAddr" class="input-field" rows="2" placeholder="House/Flat/PG No, Society/Colony, Landmark, Kharar"></textarea>
     </div>
 
   </main>
 
+  <!-- Sticky Bottom Checkout -->
   <div class="cart-bottom-bar">
     <div class="cart-inner">
       <div class="cart-summary">
@@ -462,123 +297,6 @@
     </div>
   </div>
 
-  <script>
-    const catalog = {
-      trial: { name: "Trial Mini Tiffin (1st Time Only)", price: 70, qty: 1, pro: "14g" },
-      gym_sprouts: { name: "Sprouts & Paneer Power Salad (BF)", price: 110, qty: 0, pro: "24g" },
-      gym_bhurji: { name: "Paneer Bhurji + 2 Multigrain Roti (BF)", price: 130, qty: 0, pro: "28g" },
-      gym_paneer_lunch: { name: "Paneer Beast Meal 200g (Lunch)", price: 160, qty: 0, pro: "40g" },
-      gym_soya_lunch: { name: "High-Protein Soya Curry + Rice (Lunch)", price: 120, qty: 0, pro: "46g" },
-      gym_double_dal: { name: "Double Dal & Tofu/Paneer Bowl (Lunch)", price: 140, qty: 0, pro: "32g" },
-      gym_tikka_dinner: { name: "Grilled Herb Paneer Salad (Dinner)", price: 150, qty: 0, pro: "32g" },
-      gym_soya_dinner: { name: "Soya Veggie Stir-Fry Bowl (Dinner)", price: 110, qty: 0, pro: "36g" },
-      daily_lunch: { name: "Daily Regular Lunch Thali", price: 80, qty: 0, pro: "18g" },
-      daily_dinner: { name: "Daily Regular Dinner Thali", price: 80, qty: 0, pro: "16g" }
-    };
-
-    const WHATSAPP_NUM = "91998828360";
-
-    const weeklySchedule = {
-      0: { day: "Sunday", lunch: "Special Rajma Masala + Jeera Aloo + 4 Butter Roti + Basmati Rice + Salad", dinner: "Dal Makhani + Seasonal Sabzi + 4 Tawa Roti + Rice + Salad" },
-      1: { day: "Monday", lunch: "Rajma Masala + Aloo Gobi Matar + 4 Tawa Roti + Steamed Rice + Salad", dinner: "Moong Dhuli Dal + Sukhi Bhindi Masala + 4 Tawa Roti + Rice + Achar" },
-      2: { day: "Tuesday", lunch: "Kadhi Pakoda + Sukhe Aloo Jeera + 4 Roti + Steamed Rice + Salad", dinner: "Mix Dal Fry + Baingan Bharta + 4 Roti + Rice + Salad" },
-      3: { day: "Wednesday", lunch: "Chana Masala (Chole) + Lauki Sabzi + 4 Roti + Jeera Rice + Salad", dinner: "Yellow Dal Tadka + Aloo Shimla Mirch + 4 Roti + Rice + Salad" },
-      4: { day: "Thursday", lunch: "Dal Makhani + Aloo Matar Masala + 4 Butter Roti + Steamed Rice + Salad", dinner: "Arhar Dal Fry + Gajar Matar Aloo + 4 Tawa Roti + Rice + Salad" },
-      5: { day: "Friday", lunch: "Kala Chana Masala + Lauki Chana Dal + 4 Roti + Steamed Rice + Salad", dinner: "Dal Tadka + Masala Bhindi + 4 Fresh Tawa Roti + Rice + Salad" },
-      6: { day: "Saturday", lunch: "Pindi Chole + Aloo Jeera + 4 Tawa Roti + Steamed Rice + Salad", dinner: "Panchmel Dal + Aloo Gobhi + 4 Tawa Roti + Steamed Rice + Salad" }
-    };
-
-    window.addEventListener('DOMContentLoaded', () => {
-      const dayIdx = new Date().getDay();
-      const plan = weeklySchedule[dayIdx];
-      const todayDateEl = document.getElementById('todayDate');
-      const lunchDescEl = document.getElementById('lunchMenuDesc');
-      const dinnerDescEl = document.getElementById('dinnerMenuDesc');
-
-      if (todayDateEl && plan) todayDateEl.innerText = `Today is ${plan.day} 📅`;
-      if (lunchDescEl && plan) lunchDescEl.innerText = plan.lunch;
-      if (dinnerDescEl && plan) dinnerDescEl.innerText = plan.dinner;
-    });
-
-    function modifyQty(key, delta) {
-      if (!catalog[key]) return;
-      catalog[key].qty = Math.max(0, catalog[key].qty + delta);
-      const countEl = document.getElementById('qty-' + key);
-      if (countEl) countEl.innerText = catalog[key].qty;
-      refreshCart();
-    }
-
-    function refreshCart() {
-      let total = 0;
-      let count = 0;
-      for (const k in catalog) {
-        total += catalog[k].qty * catalog[k].price;
-        count += catalog[k].qty;
-      }
-      document.getElementById('cartBill').innerText = '₹' + total;
-      document.getElementById('cartCount').innerText = `${count} ${count === 1 ? 'ITEM' : 'ITEMS'} SELECTED`;
-    }
-
-    function filterMenu(cat, btn) {
-      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const cards = document.querySelectorAll('.item-card');
-      cards.forEach(card => {
-        if (cat === 'all' || card.dataset.cat === cat) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
-
-    function placeWhatsAppOrder() {
-      const name = document.getElementById('custName').value.trim();
-      const addr = document.getElementById('custAddr').value.trim();
-
-      let orderLines = [];
-      let grandTotal = 0;
-      let hasTrial = false;
-
-      for (const k in catalog) {
-        if (catalog[k].qty > 0) {
-          if (k === 'trial') hasTrial = true;
-          orderLines.push(`▪ ${catalog[k].name} (x${catalog[k].qty}) [${catalog[k].pro} Prot] -> ₹${catalog[k].qty * catalog[k].price}`);
-          grandTotal += catalog[k].qty * catalog[k].price;
-        }
-      }
-
-      if (orderLines.length === 0) {
-        alert("Kam se kam 1 item cart me add karein!");
-        return;
-      }
-      if (!name || !addr) {
-        alert("Kripya apna naam aur address daalein.");
-        return;
-      }
-
-      const dayIdx = new Date().getDay();
-      const currentDay = weeklySchedule[dayIdx].day;
-
-      let text = `*Ghar Se Tiffin - Naya Order*\n`;
-      text += `📅 *Day:* ${currentDay}\n`;
-      text += `------------------------------------\n`;
-      text += `👤 *Customer:* ${name}\n`;
-      text += `📍 *Delivery Address:* ${addr}\n`;
-      text += `------------------------------------\n`;
-      text += `*Ordered Items:*\n`;
-      text += orderLines.join('\n') + `\n`;
-      text += `------------------------------------\n`;
-      text += `💰 *Total Amount:* ₹${grandTotal}\n`;
-      if (hasTrial) {
-        text += `\n*(Note: Trial ₹70 meal included - verified 1st time order)*\n`;
-      }
-      text += `\nKripya confirm karein aur delivery time bata dein!`;
-
-      const link = `https://wa.me/${WHATSAPP_NUM}?text=${encodeURIComponent(text)}`;
-      window.open(link, '_blank');
-    }
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
