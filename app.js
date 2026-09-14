@@ -1,4 +1,4 @@
-// APNA WHATSAPP NUMBER YAHAN DALEIN (Country code 91 ke sath, 10 digits)
+// APNA WHATSAPP NUMBER YAHAN DALEIN (916239813663)
 // Poster par number: 6239813663 (agar 10th digit bacha ho toh update karein)
 const STORE_WHATSAPP = "916239813663"; 
 
